@@ -5,7 +5,7 @@ require("dotenv").config({ path: "./server/config.env" });
 const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
-app.use(require("./server/routes"));
+app.use("/api",require("./server/routes"));
 // get driver connection
 const dbo = require("./server/conn");
 // Accessing the path module
