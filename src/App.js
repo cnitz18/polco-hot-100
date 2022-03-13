@@ -10,9 +10,9 @@ const App = () => {
 
   useEffect(() => {
     const getEntries = async () => {
-      const chart = await fetch('http://localhost:5000/hot100');
+      const chart = await fetch('/api/hot100');
       const chartData = await chart.json();
-      const favs = await fetch('http://localhost:5000/favorites');
+      const favs = await fetch('/api/favorites');
       const favData = await favs.json();
       if( chartData){
         if( chartData.songs && chartData.songs.length){
@@ -39,7 +39,7 @@ const App = () => {
     // console.log('ADDING FAVORITE:')
     // console.log(fav);
     let bodyObj = { ...fav, isFavorite : true };
-    const res = await fetch('http://localhost:5000/favorites/add',{
+    const res = await fetch('/api/favorites/add',{
       method : 'POST',
       headers : {
         'Content-Type' : 'application/json'
@@ -57,7 +57,7 @@ const App = () => {
   const deleteFavorite = async ( fav ) => {
     let recordIndex = entries.findIndex((ent) => ent.rank===fav.rank && ent.title===fav.title && ent.cover===fav.cover)
     let record = entries[recordIndex]
-    await fetch(`http://localhost:5000/favorites/${record.id}`,{ method:'DELETE' })
+    await fetch(`/api/favorites/${record.id}`,{ method:'DELETE' })
     setEntries(entries.map((ent) => {
       if( ent.id === record.id )
         return { ...ent, id : null, isFavorite : false };
