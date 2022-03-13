@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const dbo = require('./server/conn');
+const dbo = require('./conn');
 const { getChart } = require('billboard-top-100');
 // const mongoose = require('mongoose')
  const Favorites = require('./db/models/Favorites');

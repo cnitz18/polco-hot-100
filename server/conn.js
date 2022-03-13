@@ -15,7 +15,7 @@ module.exports = {
       {
         _db = db.db("charts");
         console.log("Successfully connected to MongoDB."); 
-      }
+      }else{ console.error("Unsuccessfully connected:", err)}
       return callback(err);
          });
   },
