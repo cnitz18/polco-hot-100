@@ -25,7 +25,7 @@
   },
   "scripts": {
     "startclient": "react-scripts start",
-    "buildclient5": "react-scripts build",
+    "buildclient": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "all": "concurrently \"npm:start\" \"npm:server\"",
