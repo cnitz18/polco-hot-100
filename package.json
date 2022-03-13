@@ -13,6 +13,7 @@
     "express": "^4.17.3",
     "mongodb": "^4.4.1",
     "mongoose": "^6.2.6",
+    "nodemon": "^2.0.15",
     "react": "^17.0.2",
     "react-bootstrap": "^2.2.1",
     "react-dom": "^17.0.2",
@@ -22,12 +23,17 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "startclient": "react-scripts start",
+    "buildclient5": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "node ./server/server.js",
-    "all": "concurrently \"npm:start\" \"npm:server\""
+    "all": "concurrently \"npm:start\" \"npm:server\"",
+    "build": "npm run buildclient",
+    "install-client": "npm install",
+    "heroku-postbuild": "npm run install-client && npm run build",
+    "server": "nodemon server.js",
+    "develop": "concurrently --kill-others-on-fail \"npm run server\" \"npm run startclient\"",
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run startclient\""
   },
   "eslintConfig": {
     "extends": [
